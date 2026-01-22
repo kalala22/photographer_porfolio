@@ -1,10 +1,10 @@
 
 export interface PortfolioItem {
-  id: string;
+  id: number;
   title: string;
   category: string;
   imageUrl: string;
-  span: 'portrait' | 'landscape' | 'square' | 'wide';
+  span: 'portrait' | 'landscape' | 'square' | 'wide' | 'street' | 'macro';
 }
 
 export interface BookingState {

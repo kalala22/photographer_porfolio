@@ -1,91 +1,238 @@
+import { PortfolioItem } from "./types";
 
-import { PortfolioItem } from './types';
-
-export const PRIMARY_COLOR = '#f2a60d';
+export const PRIMARY_COLOR = "#f2a60d";
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   {
-    id: '1',
-    title: 'Forest Weddings',
-    category: 'Weddings',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC3Hoq2zarZ4ltbMA_9ZjIZWGGK4uL8fiPLbJR36vlvUhx8IV_o-3m-6G_BXROFYW8IL5-0eOO0Zoq3Kcfh4X54YA2RTOr5Pmu7OwRSli3RwoyCXkcKxtpvqD7mQElx4X1pSmUWH1ej6ge842X_4b6ey5At40Sw2o603AOZj91Bxu59f0LIabQrVNhnG14zyfqmPuoOeVFgLdthQ42WpUsc_bugCzqyYr8GXoRBwx9o5fDytrX0N36A4jK8bAQ3maICfVewM-Q_wi4',
-    span: 'portrait'
+    id: 1,
+    title: "Ethereal Neon",
+    category: "Portraits",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: '2',
-    title: 'Modern Workspaces',
-    category: 'Corporate',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCR3meN0qJMErZeAceHh4LuYXVKZoW0OOh5H-tn_-cfEybv3b__FfmX31uicJkj09DGi7xLAqdALlZDv4xm-6Wpwak94FtRuncuRFhOVi9nTkVDah-9CXsi5URbhmNkkmJYxdSg_icuMNmI79zKTX-CdWiUZfbfLZ9eiiFb3eQx8C4ryHBDp5W6FTwMrxhkeHBoddBq0nXLrvJT0RHnD0RN3MRQhVbSqRIqE-q_oflRTZoFJVluADqXLv9rFGTbZxZDKacFdAJo3CI',
-    span: 'landscape'
+    id: 2,
+    title: "Mountain Serenity",
+    category: "Landscape",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: '3',
-    title: 'Ethereal Soul',
-    category: 'Portraits',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD5bsae0qciyZXrF7jO8vOcIagpnDd5NjYETElSrKwYou9w5JCmA8tY5HkUmdi2pgZXUnDEKlMKaCW9acAnC9mZZkR7wz--47WjtUvjgr0ppaIr5phHffYg3MttOlcyDdazNLB4rixp4jRM6rF_HIF5nQRvNQQOwvuvp8N5S6691ctuyXlhJm6AyQBFhIGezi1UxR6DFM1ZvKYtnII1btruh9Buy7qx7A-mPFtPrmoAFQEd4qiu-vgLVcfx7UKxtuMyDzGRqVvgVfU',
-    span: 'square'
+    id: 3,
+    title: "Tokyo Nights",
+    category: "Street",
+    span: "street",
+    imageUrl:
+      "https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: '4',
-    title: 'Candid Laughter',
-    category: 'Lifestyle',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9y8ObWlZkcX-XOCMjUU5S4dsrpuS5cajyTNciLxWD9ebFAbhgcra-fJRqo7WtRZWthaZ37xhF3Ux_qr3sL-sRWAtaG-8FOwyN_7Q97w6ou8nn7uvgkTeOzOnNYbqqsS7uHsyKrMw57ybs7S9isOgjDBC79CikYl9fUPI2IvH9MWeMyXHdpkwWCTTwpcbTeLEribmnVjNi0xMnBDIbQvGIRDYZfgiCrkw4myHlqpu87yzxnsh9SAFYTvLDzSG21NGwyKKjW3rFZAs',
-    span: 'portrait'
+    id: 4,
+    title: "Dew Drops",
+    category: "Macro",
+    span: "macro",
+    imageUrl:
+      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: '5',
-    title: 'Live Vibrance',
-    category: 'Events',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAvn90KUkrHSU4ZP3_AeXkrQRttRSCR9TD-kPcInnvGmRlh0ihlmkr2SwCzT7YokjsXU_rJQUqxfQ7dlwxlClihBHSCfMTWByhAkucZ7RTROMlVeGVpL1DhvMl3Y4hO04ykU5EtZoKKvSBbxOj8_h05aqxsLvB3h0OThRTCU3LxxuCM2ZpXWpmxFiM9bwyV-GnOAUiqGmyr44CQqxGRY7JLmX0KXhPVJY3RwcBvT6ra46DSeY887Zz2CEL2ppWWLC0rNpcGAlFClV4',
-    span: 'square'
+    id: 5,
+    title: "Urban Character",
+    category: "Portraits",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: '6',
-    title: 'Concrete Shadows',
-    category: 'Architecture',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDdSM1ctim-C5baNFRlDba8CE2Luc7eVr5Z1KkwdFewCg1pUgx6vOrR_OC4iTfzdK5DEKmnedaZcE3PDamLIu4_iDHyUo_1Pyo9NktvfCG7wEV_q9516yYjA8R4dN1D49Y2XFagpp18n-Anrq1OptR8YkKl5OY45TeZit84DcYQ5ygXb3By0tmtB6cCtG9tSHgAcHRMGt7yRioZwGFGAftM_mQa9EACsJzSG5-ujCdtSmp6LpdYYU4HbKjCZeDFnSnqVK5QVq8qwNg',
-    span: 'landscape'
+    id: 6,
+    title: "The Golden Gate",
+    category: "Landscape",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: '7',
-    title: 'City Editorial',
-    category: 'Editorial',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuFUmOfulkE2foA_k9ZfqGJfZD8Aceu1pGR8pDCf8z94gpGCvyzfSas7cWH5SHMz0Kmgxj-CJzeqdRMt9a36lWnXjivEZ7pVWNY4rrzVCDZh1cvUiv8kRNjpyatN2Ae4z9R0bJUccgmi21D6X-3FfDKyLgV2KZb3QHEhCC5D80FLcvQ0apHljA-mv2zyyaDT2QSHjlvLQybqB8cDw26pmy_sGZAkcLkPW43eoswftiOkJ03DBydLG4uMqpfFw0Ogb6dCkhPIAV8Qs',
-    span: 'square'
+    id: 7,
+    title: "Parisian Life",
+    category: "Street",
+    span: "street",
+    imageUrl:
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=800&q=80",
   },
   {
-    id: '8',
-    title: 'Timeless Precision',
-    category: 'Product',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBia0vrDVTzBt25JTB19cVN4Hgf64uEz42MsWsw1qtTgqbWSEY-BKxwyuhO_MkZvPCMHjvKaCFYa21a8PyBZgcoVliJehVLCH1QDO84K_jh-Dp_oBjN4V4cB7cg8_dW7jGz0KkpmMuxs5PQbl7y0xtuCp_8hMoN2idRrT6rZYvjKK7HMKZeEuBYtkBHe5Y3NPA0un7cmOQNxo1eUCllCJ0ZWvkjtXFhKiXVo9bpVcGK84e7jUtqBLwl2EEfmCEcf8NHAfY_2RRmVbM',
-    span: 'square'
-  }
+    id: 8,
+    title: "Nature's Detail",
+    category: "Macro",
+    span: "portrait", // Changé de 'macro' à 'portrait' pour que la hauteur soit gérée
+    imageUrl:
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 9,
+    title: "Fashion Editorial",
+    category: "Portraits",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 10,
+    title: "Desert Solitude",
+    category: "Landscape",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1473580044384-7ba9967e16a0?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 11,
+    title: "London Underground",
+    category: "Street",
+    span: "street",
+    imageUrl:
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 12,
+    title: "Butterfly Detail",
+    category: "Macro",
+    span: "macro",
+    imageUrl:
+      "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 13,
+    title: "Studio Portrait",
+    category: "Portraits",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 14,
+    title: "Wedding Vows",
+    category: "Weddings",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 15,
+    title: "Corporate Event",
+    category: "Corporate",
+    span: "street",
+    imageUrl:
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 16,
+    title: "Abstract Flora",
+    category: "Macro",
+    span: "macro",
+    imageUrl:
+      "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 101,
+    title: "The First Dance",
+    category: "Weddings",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 102,
+    title: "Golden Hour Vows",
+    category: "Weddings",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 103,
+    title: "Bridal Elegance",
+    category: "Weddings",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 104,
+    title: "The Rings",
+    category: "Weddings",
+    span: "macro",
+    imageUrl:
+      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 105,
+    title: "Classic Exit",
+    category: "Weddings",
+    span: "landscape",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 106,
+    title: "Emotional Moments",
+    category: "Weddings",
+    span: "portrait",
+    // Lien stable vers un portrait de mariés
+    imageUrl:
+      "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
+  },
+  {
+    id: 107,
+    title: "The Banquet",
+    category: "Weddings",
+    span: "landscape",
+    // Lien stable vers une réception/table de mariage
+    imageUrl:
+      "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    id: 108,
+    title: "Flower Detail",
+    category: "Weddings",
+    span: "portrait",
+    imageUrl:
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+  },
 ];
 
 export const PACKAGE_DETAILS = {
   basic: {
     price: 500,
-    label: 'Basic',
-    desc: '5 Retouched Photos, 1 Outfit, 1 Hour Session.',
-    features: ['5 High-End Retouches', '1 Outfit Change', '1 Hour Session']
+    label: "Basic",
+    desc: "5 Retouched Photos, 1 Outfit, 1 Hour Session.",
+    features: ["5 High-End Retouches", "1 Outfit Change", "1 Hour Session"],
   },
   standard: {
     price: 700,
-    label: 'Standard',
-    desc: '15 Retouched Photos, 3 Outfits, 2.5 Hour Session.',
-    features: ['15 High-End Retouches', '3 Outfit Changes', '2.5 Hour Session', 'Online Gallery']
+    label: "Standard",
+    desc: "15 Retouched Photos, 3 Outfits, 2.5 Hour Session.",
+    features: [
+      "15 High-End Retouches",
+      "3 Outfit Changes",
+      "2.5 Hour Session",
+      "Online Gallery",
+    ],
   },
   premium: {
     price: 1000,
-    label: 'Premium',
-    desc: '30 Retouched Photos, Unlimited Outfits, Full Day (8h).',
-    features: ['30 High-End Retouches', 'Unlimited Outfits', 'Full Day (8h)', 'All RAW Files']
-  }
+    label: "Premium",
+    desc: "30 Retouched Photos, Unlimited Outfits, Full Day (8h).",
+    features: [
+      "30 High-End Retouches",
+      "Unlimited Outfits",
+      "Full Day (8h)",
+      "All RAW Files",
+    ],
+  },
 };
 
 export const ENHANCEMENT_PRICES = {
   video: 150,
   express: 100,
   drone: 250,
-  album: 350
+  album: 350,
 };

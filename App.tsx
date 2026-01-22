@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { PORTFOLIO_ITEMS, PRIMARY_COLOR } from './constants';
 import BookingModal from './components/BookingModal';
 import { ModalType } from './types';
 import { getAIAssistance } from './services/geminiService';
 import Footer from './components/footer';
 import CTASection from './components/cta-section';
+import PortfolioSection from './components/portfolioSection';
 
 const App: React.FC = () => {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
@@ -19,10 +19,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const filters = ['All', 'Weddings', 'Corporate', 'Portraits', 'Lifestyle', 'Events', 'Architecture', 'Editorial', 'Product'];
-  const filteredItems = activeFilter === 'All' 
-    ? PORTFOLIO_ITEMS 
-    : PORTFOLIO_ITEMS.filter(item => item.category === activeFilter);
 
   const handleAISuggestion = async () => {
     setAILoading(true);
@@ -153,60 +149,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="py-32 px-6 md:px-10 lg:px-20 bg-background-dark">
-        <div className="max-w-7xl mx-auto space-y-20">
-          <div className="flex flex-col md:row items-end justify-between gap-12 border-b border-white/5 pb-16 md:flex-row">
-            <div className="space-y-6 max-w-2xl">
-              <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Selected Works</h2>
-              <p className="text-white/50 text-xl font-light leading-relaxed">
-                Capturing moments of raw emotion and structured beauty. A visual exploration of humanity and light.
-              </p>
-            </div>
-            
-            <div className="flex flex-wrap gap-4">
-              {filters.map(f => (
-                <button 
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${activeFilter === f ? 'bg-primary text-background-dark' : 'bg-surface-dark text-white/50 hover:text-white border border-white/5'}`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-            {filteredItems.map(item => (
-              <div 
-                key={item.id}
-                className={`group relative overflow-hidden rounded-xl bg-surface-dark cursor-pointer shadow-xl transition-all hover:-translate-y-2 ${item.span === 'portrait' ? 'row-span-2 aspect-[3/4]' : item.span === 'landscape' ? 'aspect-[16/10]' : 'aspect-square'}`}
-              >
-                <img 
-                  src={item.imageUrl} 
-                  alt={item.title} 
-                  className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
-                  <span className="text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-2">{item.category}</span>
-                  <h3 className="text-white text-2xl font-bold">{item.title}</h3>
-                  <div className="mt-6 flex items-center gap-3 text-white/70 text-sm font-bold group-hover:text-white transition-colors">
-                    View Project
-                    <span className="material-symbols-outlined text-lg">arrow_forward</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center pt-10">
-            <button className="flex items-center gap-4 px-10 py-5 rounded-full border border-white/10 text-white/50 hover:text-primary hover:border-primary transition-all group font-bold text-sm tracking-widest uppercase">
-              Load More Works
-              <span className="material-symbols-outlined transition-transform group-hover:translate-y-1">expand_more</span>
-            </button>
-          </div>
-        </div>
-      </section>
+      <PortfolioSection />
 
       {/* CTA Section */}
       <CTASection />
