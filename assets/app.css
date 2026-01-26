@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #f2a60d;
+  --color-background-light: #f8f7f5;
+  --color-background-dark: #181611;
+  --color-surface-dark: #1f1b14;
+  --color-border-dark: #393328;
+
+  --font-display: "Bricolage Grotesque", sans-serif;
+
+  --animation-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --animation-bounce-slow: bounce 3s infinite;
+
+  --keyframes-fade-in-up: fadeInUp 0.8s ease-out forwards;
+  --keyframes-bounce-slow: bounce 3s infinite;
+
+}
+/* 
+@theme {
+  darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#f2a60d",
+              "",
+              "background-dark": "#181611",
+              "surface-dark": "#1f1b14",
+              "border-dark": "#393328",
+            },
+            fontFamily: {
+              display: ["Manrope", "sans-serif"],
+            },
+            animation: {
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+              "bounce-slow": "bounce 3s infinite",
+            },
+            keyframes: {
+              fadeInUp: {
+                "0%": { opacity: "0", transform: "translateY(20px)" },
+                "100%": { opacity: "1", transform: "translateY(0)" },
+              },
+            }, 
+          },
+        }
+    } */
