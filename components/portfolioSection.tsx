@@ -46,7 +46,7 @@ export default function PortfolioSection() {
               <button
                 key={f}
                 onClick={() => setActiveFilter(f)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase transition-all ${
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase transition-all hover:cursor-pointer ${
                   activeFilter === f
                     ? "bg-primary text-background-dark"
                     : "bg-surface-dark text-white/50 border border-white/5"
