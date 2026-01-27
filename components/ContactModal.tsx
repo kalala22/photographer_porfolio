@@ -37,7 +37,7 @@ const portfolioImages = [
 export function ContactModal({
   isOpen,
   onClose,
-  whatsappNumber = "+1234567890",
+  whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER,
 }: ContactModalProps) {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
