@@ -68,7 +68,7 @@ export default function PortfolioSection() {
               {/* Skeleton Loader (visible tant que l'image n'est pas chargée) */}
               {!loadedImages[item.id] && (
                 <div
-                  className={`w-full bg-white/5 animate-pulse ${item.span === "portrait" ? "aspect-[3/4]" : "aspect-video"}`}
+                  className={`w-full bg-white/5 animate-pulse ${item.span === "portrait" ? "aspect-3/4" : "aspect-video"}`}
                 />
               )}
 
@@ -85,7 +85,7 @@ export default function PortfolioSection() {
 
               {/* Overlay (ne s'affiche que si l'image est chargée) */}
               {loadedImages[item.id] && (
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <span className="text-primary text-[10px] font-black uppercase tracking-widest mb-2">
                     {item.category}
                   </span>

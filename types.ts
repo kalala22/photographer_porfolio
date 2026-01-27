@@ -7,6 +7,14 @@ export interface PortfolioItem {
   span: 'portrait' | 'landscape' | 'square' | 'wide' | 'street' | 'macro';
 }
 
+export interface SocialMediaProps {
+    links: {
+        icon: React.ReactNode;
+        label: string;
+        href: string;
+    }[];
+}
+
 export interface BookingState {
   fullName: string;
   email: string;
