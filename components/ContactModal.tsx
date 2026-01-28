@@ -1,5 +1,13 @@
-import { X, Send, MessageCircle } from "lucide-react";
-import React, { useState, useEffect } from "react";
+import {
+  X,
+  Send,
+  MessageCircle,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { AnimatePresence, motion } from "motion/react";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -39,10 +47,53 @@ export function ContactModal({
   onClose,
   whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER,
 }: ContactModalProps) {
-  const [email, setEmail] = useState("");
+  const [user_name, setUser_name] = useState("");
+  const [user_email, setUser_email] = useState("");
   const [message, setMessage] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [status, setStatus] = useState<{
+    type: "success" | "error" | "loading" | null;
+    message: string;
+  }>({
+    type: null,
+    message: "",
+  });
+  const [isSending, setIsSending] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+    setStatus({ type: null, message: "" });
+
+    emailjs
+      .sendForm("service_w9sgd09", "template_iy1k5qg", form.current, {
+        publicKey: import.meta.env.VITE_EMAILJS_PUBLIC,
+      })
+      .then(
+        () => {
+          setStatus({
+            type: "success",
+            message: "Message envoyé avec succès",
+          });
+          setUser_name("");
+          setUser_email("");
+          setMessage("");
+          if (form.current) form.current.reset();
+        },
+        (error) => {
+          setStatus({
+            type: "error",
+            message: "Une erreur est survenue lors de l'envoi du message",
+          });
+          console.log("FAILED...", error.text);
+        },
+      )
+      .finally(() => {
+        setIsSending(false);
+      });
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -65,18 +116,21 @@ export function ContactModal({
     return () => clearInterval(interval);
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log("Form submitted:", { email, message });
-    // Logique de soumission ici
-    setEmail("");
-    setMessage("");
-    onClose();
-  };
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", { email, message });
+  //   // Logique de soumission ici
+  //   setEmail("");
+  //   setMessage("");
+  //   onClose();
+  // };
 
   const handleWhatsApp = () => {
     const whatsappMessage = encodeURIComponent(
-      "Hello! I'd like to discuss a photography session.",
+      "Bonjour Chretien,\n\nJe souhaite réserver une seance.\n\n" +
+        "• Type de seance : \n" +
+        "• Date prévue : \n" +
+        "• Budget estimé : \n",
     );
     window.open(
       `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}?text=${whatsappMessage}`,
@@ -159,8 +213,27 @@ export function ContactModal({
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            <form onSubmit={sendEmail} className="p-6 space-y-4" ref={form}>
               {/* Email Input */}
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm text-white/80 mb-2"
+                >
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="user_name"
+                  value={user_name}
+                  onChange={(e) => setUser_name(e.target.value)}
+                  className="w-full px-4 py-3 bg-[#27231b] border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-primary transition-colors"
+                  placeholder="Ex: Esther Hadassa"
+                  required
+                />
+              </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -171,10 +244,11 @@ export function ContactModal({
                 <input
                   type="email"
                   id="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="user_email"
+                  value={user_email}
+                  onChange={(e) => setUser_email(e.target.value)}
                   className="w-full px-4 py-3 bg-[#27231b] border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-primary transition-colors"
-                  placeholder="you@example.com"
+                  placeholder="Ex: you@example.com"
                   required
                 />
               </div>
@@ -189,6 +263,7 @@ export function ContactModal({
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
@@ -198,13 +273,38 @@ export function ContactModal({
                 />
               </div>
 
+              <AnimatePresence>
+                {status.type && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className={`p-4 rounded-lg text-sm font-medium mb-4 flex items-center gap-3 ${
+                      status.type === "success"
+                        ? "bg-green-500/10 border border-green-500/20 text-green-400"
+                        : "bg-red-500/10 border border-red-500/20 text-red-400"
+                    }`}
+                  >
+                    {status.type === "success" ? (
+                      <CheckCircle2 size={18} />
+                    ) : (
+                      <AlertCircle size={18} />
+                    )}
+                    {status.message}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:bg-[#d99509] transition-all flex items-center justify-center gap-2 shadow-lg shadow-bg-primary"
+                disabled={isSending}
+                className={`w-full px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:bg-[#d99509] transition-all flex items-center justify-center gap-2 shadow-lg shadow-bg-primary ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
               >
-                <span>Send Message</span>
-                <Send className="w-4 h-4" />
+                {isSending ? "Envoi en cours..." : "Confirmer la réservation"}
+                <Send
+                  className={`w-4 h-4 ${isSending ? "animate-pulse" : ""}`}
+                />
               </button>
 
               {/* Separator */}
