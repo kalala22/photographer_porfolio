@@ -160,7 +160,7 @@ export function ContactModal({
       >
         <div className="flex flex-col md:flex-row">
           {/* Image Gallery Section */}
-          <div className="relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+          <div className="hidden md:block relative w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
             <div className="absolute inset-0">
               {portfolioImages.map((img, index) => (
                 <img
