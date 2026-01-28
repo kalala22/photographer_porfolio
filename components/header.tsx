@@ -1,6 +1,8 @@
 import React from "react";
 import { ModalType } from "@/types";
 import { Aperture, Menu } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface HeaderProps {
   onOpenModal: (type: ModalType) => void;
@@ -8,6 +10,8 @@ interface HeaderProps {
 }
 
 export default function Header({ onOpenModal, scrolled }: HeaderProps) {
+  const { t } = useTranslation();
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -47,8 +51,9 @@ export default function Header({ onOpenModal, scrolled }: HeaderProps) {
             onClick={() => onOpenModal("booking")}
             className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-primary/90 text-background-dark text-sm font-bold transition-all shadow-lg shadow-primary/20 cursor-pointer"
           >
-            Book Now
+            {t("header.bookBtn")}
           </button>
+          <LanguageSwitcher />
           {/* <button className="lg:hidden flex items-center justify-center text-white p-2">
             <Menu className="size-8" />
           </button> */}

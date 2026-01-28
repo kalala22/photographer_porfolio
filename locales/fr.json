@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "subtitle": "Capturer des instants, raconter des histoires.",
+    "bookBtn": "Réserver une séance",
+    "portfolioBtn": "Voir le Portfolio",
+    "explore": "Explorer",
+    "stats": {
+      "vision": "Années de Vision",
+      "stories": "Histoires Racontées"
+    },
+    "location": "Basé à Kinshasa, RDC"
+  },
+  "header": {
+    "bookBtn": "Réserver"
+  },
+  "cta": {
+    "title": "Prêt à raconter votre histoire ?",
+    "description": "Réservez une séance ou renseignez-vous sur les tarifs de votre prochain projet. Je me spécialise dans la capture des moments les plus importants.",
+    "button": "Démarrer un Projet"
+  },
+  "portfolio": {
+    "title": "Travaux Sélectionnés",
+    "subtitle": "Capturer l'émotion brute et la beauté structurée.",
+    "filters": {
+      "All": "Tous",
+      "Weddings": "Mariages",
+      "Corporate": "Entreprise",
+      "Portraits": "Portraits",
+      "Landscape": "Paysage",
+      "Street": "Urbain",
+      "Macro": "Macro"
+    }
+  },
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "tagline": "Capturer le monde, une image à la fois."
+  },
+  "contact": {
+    "title": "Entrer en Contact",
+    "subtitle": "Capturons votre histoire ensemble.",
+    "fields": {
+      "name": "Nom Complet",
+      "email": "Email",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet..."
+    },
+    "status": {
+      "sending": "Envoi en cours...",
+      "confirm": "Confirmer la réservation",
+      "success": "Message envoyé avec succès",
+      "error": "Une erreur est survenue lors de l'envoi du message"
+    },
+    "or": "OU",
+    "whatsapp": "Discuter sur WhatsApp",
+    "whatsappTemplate": "Bonjour Chretien,\n\nJe souhaite réserver une séance.\n\n• Type de séance : \n• Date prévue : \n• Budget estimé : \n"
+  }
+}

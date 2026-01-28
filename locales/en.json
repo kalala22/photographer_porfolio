@@ -1,0 +1,57 @@
+{
+  "hero": {
+    "subtitle": "Capturing moments, telling stories.",
+    "bookBtn": "Book a Session",
+    "portfolioBtn": "View Portfolio",
+    "explore": "Explore",
+    "stats": {
+      "vision": "Years of Vision",
+      "stories": "Stories Told"
+    },
+    "location": "Based in Kinshasa, RDC"
+  },
+  "header": {
+    "bookBtn": "Book Now"
+  },
+  "cta": {
+    "title": "Ready to tell your story?",
+    "description": "Book a session or inquire about rates for your next project. I specialize in capturing the moments that matter most.",
+    "button": "Start a Project"
+  },
+  "portfolio": {
+    "title": "Selected Works",
+    "subtitle": "Capturing raw emotion and structured beauty.",
+    "filters": {
+      "All": "All",
+      "Weddings": "Weddings",
+      "Corporate": "Corporate",
+      "Portraits": "Portraits",
+      "Landscape": "Landscape",
+      "Street": "Street",
+      "Macro": "Macro"
+    }
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "tagline": "Capturing the world one frame at a time."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's capture your story together.",
+    "fields": {
+      "name": "Full Name",
+      "email": "Email",
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project..."
+    },
+    "status": {
+      "sending": "Sending...",
+      "confirm": "Confirm Booking",
+      "success": "Message sent successfully",
+      "error": "An error occurred while sending the message"
+    },
+    "or": "OR",
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappTemplate": "Hello Chretien,\n\nI would like to book a session.\n\n• Session Type: \n• Date: \n• Estimated Budget: \n"
+  }
+}

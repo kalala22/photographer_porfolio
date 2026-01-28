@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { PORTFOLIO_ITEMS } from "@/constants";
+import { useTranslation } from "react-i18next";
 
 export default function PortfolioSection() {
+  const { t } = useTranslation();
   const [activeFilter, setActiveFilter] = useState("All");
   const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({});
 
@@ -35,10 +37,10 @@ export default function PortfolioSection() {
         <div className="flex flex-col md:flex-row items-end justify-between gap-12 border-b border-white/5 pb-16">
           <div className="space-y-6 max-w-2xl">
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">
-              Selected Works
+              {t("portfolio.title")}
             </h2>
             <p className="text-white/50 text-xl font-light">
-              Capturing raw emotion and structured beauty.
+              {t("portfolio.subtitle")}
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -52,7 +54,7 @@ export default function PortfolioSection() {
                     : "bg-surface-dark text-white/50 border border-white/5"
                 }`}
               >
-                {f}
+                {t(`portfolio.filters.${f}`)}
               </button>
             ))}
           </div>
@@ -87,7 +89,7 @@ export default function PortfolioSection() {
               {loadedImages[item.id] && (
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                   <span className="text-primary text-[10px] font-black uppercase tracking-widest mb-2">
-                    {item.category}
+                    {t(`portfolio.filters.${item.category}`)}
                   </span>
                   <h3 className="text-white text-2xl font-bold">
                     {item.title}

@@ -7,6 +7,7 @@ import CTASection from "./components/cta-section";
 import PortfolioSection from "./components/portfolioSection";
 import Header from "./components/header";
 import { ArrowRight, MapPinHouse } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Liste des images pour le défilement
 const HERO_IMAGES = [
@@ -17,6 +18,7 @@ const HERO_IMAGES = [
 ];
 
 const App: React.FC = () => {
+  const { t } = useTranslation();
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [scrolled, setScrolled] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -93,7 +95,7 @@ const App: React.FC = () => {
               transition={{ delay: 0.3 }}
               className="text-white/80 text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto"
             >
-              Capturing moments, telling stories.
+              {t("hero.subtitle")}
             </motion.p>
           </div>
 
@@ -102,7 +104,7 @@ const App: React.FC = () => {
               onClick={() => setActiveModal("booking")}
               className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 bg-primary hover:bg-primary/90 text-background-dark text-base font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(242,166,13,0.3)] transform hover:-translate-y-1 cursor-pointer"
             >
-              Book a Session
+              {t("hero.bookBtn")}
               <ArrowRight className="ml-2 size-5" />
             </button>
             <button
@@ -113,7 +115,7 @@ const App: React.FC = () => {
               }
               className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 border border-white/30 hover:border-white text-white hover:bg-white/5 text-base font-medium transition-all cursor-pointer"
             >
-              View Portfolio
+              {t("hero.portfolioBtn")}
             </button>
           </div>
         </div>
@@ -121,7 +123,7 @@ const App: React.FC = () => {
         {/* UI Elements (Scroll Indicator, Stats, Location) */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60">
           <span className="text-[10px] uppercase tracking-[0.4em] font-bold">
-            Explore
+            {t("hero.explore")}
           </span>
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -135,13 +137,13 @@ const App: React.FC = () => {
           <div>
             <span className="block text-primary text-3xl font-black">5+</span>
             <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
-              Years of Vision
+              {t("hero.stats.vision")}
             </span>
           </div>
           <div>
             <span className="block text-primary text-3xl font-black">100+</span>
             <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
-              Stories Told
+              {t("hero.stats.stories")}
             </span>
           </div>
         </div>
@@ -149,7 +151,7 @@ const App: React.FC = () => {
         <div className="absolute bottom-12 left-20 z-20 hidden lg:flex items-center gap-3 text-white/40">
           <MapPinHouse size={18} />
           <span className="text-[10px] uppercase tracking-[0.3em] font-bold">
-            Based in Kinshasa, RDC
+            {t("hero.location")}
           </span>
         </div>
       </section>

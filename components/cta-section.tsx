@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { ModalType } from "../types";
+import { useTranslation } from "react-i18next";
 
 interface CTASectionProps {
   setActiveModal: (modal: ModalType) => void;
 }
 
 export default function CTASection({ setActiveModal }: CTASectionProps) {
+  const { t } = useTranslation();
+
   return (
     <section className="relative py-40 px-6 text-center overflow-hidden border-t border-white/5">
       <div className="absolute inset-0 z-0">
@@ -19,17 +21,16 @@ export default function CTASection({ setActiveModal }: CTASectionProps) {
 
       <div className="relative z-10 max-w-4xl mx-auto space-y-10">
         <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
-          Ready to tell your story?
+          {t("cta.title")}
         </h2>
         <p className="text-white/50 text-xl font-light leading-relaxed max-w-2xl mx-auto">
-          Book a session or inquire about rates for your next project. I
-          specialize in capturing the moments that matter most.
+          {t("cta.description")}
         </p>
         <button
           onClick={() => setActiveModal("booking")}
           className="inline-flex items-center justify-center rounded-lg h-16 px-12 bg-primary hover:bg-primary/90 text-background-dark text-lg font-black tracking-wide transition-all shadow-2xl transform hover:-translate-y-1"
         >
-          Start a Project
+          {t("cta.button")}
         </button>
       </div>
     </section>

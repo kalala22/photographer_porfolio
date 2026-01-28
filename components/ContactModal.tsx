@@ -8,6 +8,7 @@ import {
 import React, { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslation } from "react-i18next";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -47,6 +48,7 @@ export function ContactModal({
   onClose,
   whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER,
 }: ContactModalProps) {
+  const { t } = useTranslation();
   const [user_name, setUser_name] = useState("");
   const [user_email, setUser_email] = useState("");
   const [message, setMessage] = useState("");
@@ -75,7 +77,7 @@ export function ContactModal({
         () => {
           setStatus({
             type: "success",
-            message: "Message envoyé avec succès",
+            message: t("contact.status.success"),
           });
           setUser_name("");
           setUser_email("");
@@ -85,7 +87,7 @@ export function ContactModal({
         (error) => {
           setStatus({
             type: "error",
-            message: "Une erreur est survenue lors de l'envoi du message",
+            message: t("contact.status.error"),
           });
           console.log("FAILED...", error.text);
         },
@@ -127,10 +129,13 @@ export function ContactModal({
 
   const handleWhatsApp = () => {
     const whatsappMessage = encodeURIComponent(
-      "Bonjour Chretien,\n\nJe souhaite réserver une seance.\n\n" +
-        "• Type de seance : \n" +
-        "• Date prévue : \n" +
-        "• Budget estimé : \n",
+      t("contact.whatsappTemplate", {
+        defaultValue:
+          "Bonjour Chretien,\n\nJe souhaite réserver une seance.\n\n" +
+          "• Type de seance : \n" +
+          "• Date prévue : \n" +
+          "• Budget estimé : \n",
+      }),
     );
     window.open(
       `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, "")}?text=${whatsappMessage}`,
@@ -205,11 +210,9 @@ export function ContactModal({
                 <X className="w-5 h-5" />
               </button>
               <h2 className="text-2xl font-bold text-white mb-1">
-                Get in Touch
+                {t("contact.title")}
               </h2>
-              <p className="text-sm text-white/60">
-                Let's capture your story together.
-              </p>
+              <p className="text-sm text-white/60">{t("contact.subtitle")}</p>
             </div>
 
             {/* Form */}
@@ -220,7 +223,7 @@ export function ContactModal({
                   htmlFor="name"
                   className="block text-sm text-white/80 mb-2"
                 >
-                  Full Name
+                  {t("contact.fields.name")}
                 </label>
                 <input
                   type="text"
@@ -239,7 +242,7 @@ export function ContactModal({
                   htmlFor="email"
                   className="block text-sm text-white/80 mb-2"
                 >
-                  Email
+                  {t("contact.fields.email")}
                 </label>
                 <input
                   type="email"
@@ -259,7 +262,7 @@ export function ContactModal({
                   htmlFor="message"
                   className="block text-sm text-white/80 mb-2"
                 >
-                  Message
+                  {t("contact.fields.message")}
                 </label>
                 <textarea
                   id="message"
@@ -268,7 +271,7 @@ export function ContactModal({
                   onChange={(e) => setMessage(e.target.value)}
                   rows={4}
                   className="w-full px-4 py-3 bg-[#27231b] border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-primary transition-colors resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder={t("contact.fields.messagePlaceholder")}
                   required
                 />
               </div>
@@ -301,7 +304,9 @@ export function ContactModal({
                 disabled={isSending}
                 className={`w-full px-6 py-3 bg-primary text-black font-semibold rounded-lg hover:bg-[#d99509] transition-all flex items-center justify-center gap-2 shadow-lg shadow-bg-primary ${isSending ? "opacity-70 cursor-not-allowed" : ""}`}
               >
-                {isSending ? "Envoi en cours..." : "Confirmer la réservation"}
+                {isSending
+                  ? t("contact.status.sending")
+                  : t("contact.status.confirm")}
                 <Send
                   className={`w-4 h-4 ${isSending ? "animate-pulse" : ""}`}
                 />
@@ -314,7 +319,7 @@ export function ContactModal({
                 </div>
                 <div className="relative flex justify-center">
                   <span className="px-4 text-sm text-white/40 bg-[#0a0a0a]">
-                    OR
+                    {t("contact.or")}
                   </span>
                 </div>
               </div>
@@ -326,7 +331,7 @@ export function ContactModal({
                 className="w-full px-6 py-3 bg-transparent border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/20 transition-all flex items-center justify-center gap-2"
               >
                 <MessageCircle className="w-5 h-5" />
-                <span>Chat on WhatsApp</span>
+                <span>{t("contact.whatsapp")}</span>
               </button>
             </form>
           </div>
