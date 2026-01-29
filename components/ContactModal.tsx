@@ -70,7 +70,7 @@ export function ContactModal({
     setStatus({ type: null, message: "" });
 
     emailjs
-      .sendForm("service_w9sgd09", "template_iy1k5qg", form.current, {
+      .sendForm("service_7ddbnph", "template_qci1jnl", form.current, {
         publicKey: import.meta.env.VITE_EMAILJS_PUBLIC,
       })
       .then(
