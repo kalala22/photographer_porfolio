@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Languages } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
@@ -11,7 +12,9 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
       className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-primary/40 transition-all group overflow-hidden relative cursor-pointer"
       aria-label="Toggle language"
@@ -23,6 +26,6 @@ export default function LanguageSwitcher() {
 
       {/* Subtle indicator */}
       <span className="absolute bottom-0 left-0 w-full h-px bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-    </button>
+    </motion.button>
   );
 }

@@ -100,23 +100,27 @@ const App: React.FC = () => {
           </div>
 
           <div className="pt-8 flex flex-col sm:flex-row gap-6 items-center justify-center">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActiveModal("booking")}
-              className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 bg-primary hover:bg-primary/90 text-background-dark text-base font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(242,166,13,0.3)] transform hover:-translate-y-1 cursor-pointer"
+              className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 bg-primary hover:bg-primary/90 text-background-dark text-base font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(242,166,13,0.3)] transform cursor-pointer"
             >
               {t("hero.bookBtn")}
               <ArrowRight className="ml-2 size-5" />
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.05)" }}
+              whileTap={{ scale: 0.95 }}
               onClick={() =>
                 document
                   .getElementById("portfolio")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 border border-white/30 hover:border-white text-white hover:bg-white/5 text-base font-medium transition-all cursor-pointer"
+              className="flex min-w-[180px] items-center justify-center rounded-lg h-14 px-10 border border-white/30 hover:border-white text-white text-base font-medium transition-all cursor-pointer"
             >
               {t("hero.portfolioBtn")}
-            </button>
+            </motion.button>
           </div>
         </div>
 
@@ -134,26 +138,40 @@ const App: React.FC = () => {
         </div>
 
         <div className="absolute bottom-12 right-20 z-20 hidden xl:flex flex-col gap-8 border-l border-white/10 pl-8">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
             <span className="block text-primary text-3xl font-black">5+</span>
             <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
               {t("hero.stats.vision")}
             </span>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+          >
             <span className="block text-primary text-3xl font-black">100+</span>
             <span className="text-white/40 text-[10px] uppercase tracking-widest font-bold">
               {t("hero.stats.stories")}
             </span>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="absolute bottom-12 left-20 z-20 hidden lg:flex items-center gap-3 text-white/40">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          className="absolute bottom-12 left-20 z-20 hidden lg:flex items-center gap-3 text-white/40"
+        >
           <MapPinHouse size={18} />
           <span className="text-[10px] uppercase tracking-[0.3em] font-bold">
             {t("hero.location")}
           </span>
-        </div>
+        </motion.div>
       </section>
 
       {/* Sections suivantes */}
@@ -177,12 +195,14 @@ const App: React.FC = () => {
 
       <Footer />
 
-      {activeModal === "booking" && (
-        <ContactModal
-          isOpen={activeModal === "booking"}
-          onClose={() => setActiveModal(null)}
-        />
-      )}
+      <AnimatePresence>
+        {activeModal === "booking" && (
+          <ContactModal
+            isOpen={activeModal === "booking"}
+            onClose={() => setActiveModal(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };

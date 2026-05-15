@@ -1,5 +1,6 @@
 import { ModalType } from "../types";
 import { useTranslation } from "react-i18next";
+import { motion } from "motion/react";
 
 interface CTASectionProps {
   setActiveModal: (modal: ModalType) => void;
@@ -11,27 +12,48 @@ export default function CTASection({ setActiveModal }: CTASectionProps) {
   return (
     <section className="relative py-40 px-6 text-center overflow-hidden border-t border-white/5">
       <div className="absolute inset-0 z-0">
-        <img
+        <motion.img
+          initial={{ scale: 1.2, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 0.1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.5 }}
           alt="Studio Blur"
-          className="h-full w-full object-cover opacity-10"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeR6lQs45C16zYi8aohD5pI1yV03bLf0RjbF89db9Cam_FlJxo0PIWW-cWaKQvdVb0t2wnPhGNaRgvIROFYp5_EDm8D7cTk36BhmUnkN1A3FOLUZqTSVYM_HSvtwfTAFVUWT3NRhBh0F2gUfoBYL42eBE9dafDV4nKhaM2raQVzPnl1PQgQ7jkk8dr92OH6hdfk6p0KcpVsgcBvVUCTw1usHjuVGpdKJtZZXu-njIMEcjms9QUxf9ZRBl60ouL-LORhDHHkSum63w"
+          className="h-full w-full object-cover"
+          src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1920&auto=format&fit=crop"
         />
         <div className="absolute inset-0 bg-background-dark/80"></div>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto space-y-10">
-        <h2 className="text-5xl md:text-7xl font-black tracking-tighter">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-5xl md:text-7xl font-black tracking-tighter"
+        >
           {t("cta.title")}
-        </h2>
-        <p className="text-white/50 text-xl font-light leading-relaxed max-w-2xl mx-auto">
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-white/50 text-xl font-light leading-relaxed max-w-2xl mx-auto"
+        >
           {t("cta.description")}
-        </p>
-        <button
+        </motion.p>
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          whileHover={{ scale: 1.05, y: -5 }}
+          whileTap={{ scale: 0.95 }}
           onClick={() => setActiveModal("booking")}
-          className="inline-flex items-center justify-center rounded-lg h-16 px-12 bg-primary hover:bg-primary/90 text-background-dark text-lg font-black tracking-wide transition-all shadow-2xl transform hover:-translate-y-1"
+          className="inline-flex items-center justify-center rounded-lg h-16 px-12 bg-primary hover:bg-primary/90 text-background-dark text-lg font-black tracking-wide transition-all shadow-2xl cursor-pointer"
         >
           {t("cta.button")}
-        </button>
+        </motion.button>
       </div>
     </section>
   );
