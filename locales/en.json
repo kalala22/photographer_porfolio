@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Capturing moments, telling stories.",
+    "subtitle": "Capturing your moments, delivered securely in your private space.",
     "bookBtn": "Book a Session",
     "portfolioBtn": "View Portfolio",
     "explore": "Explore",
@@ -9,6 +9,22 @@
       "stories": "Stories Told"
     },
     "location": "Based in Kinshasa, RDC"
+  },
+  "delivery": {
+    "title": "A Premium Delivery Experience",
+    "subtitle": "Your photos aren't just images; they're your most precious memories. We ensure fast and secure delivery.",
+    "step1": {
+      "title": "Photo Session",
+      "desc": "We capture your best moments with professional equipment."
+    },
+    "step2": {
+      "title": "Private Link",
+      "desc": "You receive a unique and secure link to your personal gallery."
+    },
+    "step3": {
+      "title": "Download",
+      "desc": "View, select, and download your photos in high resolution."
+    }
   },
   "header": {
     "bookBtn": "Book Now"

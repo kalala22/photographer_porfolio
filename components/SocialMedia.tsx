@@ -1,10 +1,11 @@
-import { MapPin, Mail } from "lucide-react";
+import { Facebook, Mail, Instagram } from "lucide-react";
 import { motion } from "motion/react";
 
 export default function SocialMedia() {
   const contactLinks = [
-    { icon: <MapPin />, label: "Location", href: "#" },
+    { icon: <Facebook />, label: "Facebook", href: "#" },
     { icon: <Mail />, label: "Email", href: "#" },
+    { icon: <Instagram />, label: "Instagram", href: "#" },
   ];
 
   const container = {
@@ -39,7 +40,9 @@ export default function SocialMedia() {
           whileTap={{ scale: 0.9 }}
           className="size-12 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary transition-all shadow-lg hover:shadow-primary/10"
         >
-          <span className="material-symbols-outlined text-xl">{link.icon}</span>
+          <span className="flex items-center justify-center text-xl">
+            {link.icon}
+          </span>
         </motion.a>
       ))}
     </motion.div>

@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Capturer des instants, raconter des histoires.",
+    "subtitle": "Capturer vos moments, livrés en toute sécurité dans votre espace privé.",
     "bookBtn": "Réserver une séance",
     "portfolioBtn": "Voir le Portfolio",
     "explore": "Explorer",
@@ -9,6 +9,22 @@
       "stories": "Histoires Racontées"
     },
     "location": "Basé à Kinshasa, RDC"
+  },
+  "delivery": {
+    "title": "Une expérience de livraison premium",
+    "subtitle": "Vos photos ne sont pas juste des images, ce sont vos souvenirs les plus précieux. Nous assurons une livraison rapide et sécurisée.",
+    "step1": {
+      "title": "Séance Photo",
+      "desc": "Nous capturons vos plus beaux moments avec un équipement professionnel."
+    },
+    "step2": {
+      "title": "Lien Privé",
+      "desc": "Vous recevez un lien unique et sécurisé vers votre galerie personnelle."
+    },
+    "step3": {
+      "title": "Téléchargement",
+      "desc": "Consultez, sélectionnez et téléchargez vos photos en haute résolution."
+    }
   },
   "header": {
     "bookBtn": "Réserver"
