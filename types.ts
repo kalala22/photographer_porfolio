@@ -4,6 +4,7 @@ export interface PortfolioItem {
   title: string;
   category: string;
   imageUrl: string;
+  url?: string;
   span: 'portrait' | 'landscape' | 'square' | 'wide' | 'street' | 'macro';
 }
 
@@ -34,4 +35,7 @@ export interface BookingState {
   eventType: string;
 }
 
-export type ModalType = 'booking' | 'ai-assistant' | null;
+export type ModalType = 'booking' | 'ai-assistant' | 'client-space' | null;
+
+// Re-export database types
+export type { Gallery, GalleryPhoto, GalleryWithPhotos } from './lib/database.types';
