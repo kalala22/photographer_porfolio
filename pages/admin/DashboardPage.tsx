@@ -12,6 +12,8 @@ import {
   Clock,
   AlertCircle,
   Search,
+  AlertTriangle,
+  X,
 } from 'lucide-react';
 
 const DashboardPage: React.FC = () => {
@@ -19,6 +21,7 @@ const DashboardPage: React.FC = () => {
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [galleryToDelete, setGalleryToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetchGalleries();
@@ -34,11 +37,16 @@ const DashboardPage: React.FC = () => {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Supprimer cette galerie et toutes ses photos ?')) return;
-    setDeletingId(id);
-    await deleteGallery(id);
+  const handleDeleteClick = (id: string) => {
+    setGalleryToDelete(id);
+  };
+
+  const confirmDelete = async () => {
+    if (!galleryToDelete) return;
+    setDeletingId(galleryToDelete);
+    await deleteGallery(galleryToDelete);
     setDeletingId(null);
+    setGalleryToDelete(null);
   };
 
   const isExpired = (expiresAt: string | null) => {
@@ -252,7 +260,7 @@ const DashboardPage: React.FC = () => {
                       Gérer
                     </Link>
                     <button
-                      onClick={() => handleDelete(gallery.id)}
+                      onClick={() => handleDeleteClick(gallery.id)}
                       disabled={deletingId === gallery.id}
                       className="h-9 w-9 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-white/30 hover:text-red-400 hover:border-red-500/30 transition-all cursor-pointer disabled:opacity-50"
                     >
@@ -269,6 +277,69 @@ const DashboardPage: React.FC = () => {
           </AnimatePresence>
         </div>
       )}
+      {/* Delete Confirmation Modal */}
+      <AnimatePresence>
+        {galleryToDelete && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setGalleryToDelete(null)}
+              className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-md bg-zinc-900 border border-white/10 rounded-3xl p-8 shadow-2xl"
+            >
+              <button
+                onClick={() => setGalleryToDelete(null)}
+                className="absolute top-6 right-6 text-white/20 hover:text-white transition-colors"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center border border-red-500/20 mb-6">
+                  <AlertTriangle size={32} className="text-red-500" />
+                </div>
+
+                <h3 className="text-xl font-black text-white tracking-tight mb-2">
+                  Supprimer la galerie ?
+                </h3>
+                <p className="text-white/40 text-sm leading-relaxed mb-8">
+                  Cette action est irréversible. Toutes les photos associées à cette galerie seront définitivement supprimées du stockage.
+                </p>
+
+                <div className="flex w-full gap-3">
+                  <button
+                    onClick={() => setGalleryToDelete(null)}
+                    className="flex-1 h-12 bg-white/5 border border-white/10 rounded-xl text-sm font-bold text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    onClick={confirmDelete}
+                    disabled={!!deletingId}
+                    className="flex-1 h-12 bg-red-500 hover:bg-red-600 rounded-xl text-sm font-bold text-white transition-colors cursor-pointer flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {deletingId ? (
+                      <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                      <>
+                        <Trash2 size={16} />
+                        Supprimer
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
